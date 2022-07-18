@@ -113,19 +113,19 @@ public class CaptureCtrl extends AppCompatActivity {
         }
 
         // Check if a control permission rule was set
-        mPermissions = PCAPdroid.getInstance().getCtrlPermissions();
-        AppDescriptor app = getCallingApp();
-        if(app != null) {
-            CtrlPermissions.ConsentType consent = mPermissions.getConsent(app.getPackageName());
-
-            if(consent == CtrlPermissions.ConsentType.ALLOW) {
-                processRequest(intent, action);
-                return;
-            } else if(consent == CtrlPermissions.ConsentType.DENY) {
-                abort();
-                return;
-            }
-        }
+//        mPermissions = PCAPdroid.getInstance().getCtrlPermissions();
+//        AppDescriptor app = getCallingApp();
+//        if(app != null) {
+//            CtrlPermissions.ConsentType consent = mPermissions.getConsent(app.getPackageName());
+//
+//            if(consent == CtrlPermissions.ConsentType.ALLOW) {
+//                processRequest(intent, action);
+//                return;
+//            } else if(consent == CtrlPermissions.ConsentType.DENY) {
+//                abort();
+//                return;
+//            }
+//        }
 
         if(isControlApp(action)) {
             processRequest(intent, action);
@@ -133,8 +133,8 @@ public class CaptureCtrl extends AppCompatActivity {
         }
 
         // Show authorization window
-        findViewById(R.id.allow_btn).setOnClickListener(v -> controlAction(intent, action, true));
-        findViewById(R.id.deny_btn).setOnClickListener(v -> controlAction(intent, action, false));
+//        findViewById(R.id.allow_btn).setOnClickListener(v -> controlAction(intent, action, true));
+//        findViewById(R.id.deny_btn).setOnClickListener(v -> controlAction(intent, action, false));
 
         if(app != null) {
             ((TextView)findViewById(R.id.app_name)).setText(app.getName());
